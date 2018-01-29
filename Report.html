@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11863,7 +11863,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -12006,7 +12006,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -12124,9 +12124,10 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:The first sample represents food markets ,
-         The Second sample represents cafes,
-         The third sample represents farmers market. </strong></p>
+<p><strong>Answer:</strong></p>
+<p><strong> Sample 0: As you can see from above statistical description , Customer 43 spends a lot in Grocery, Milk and Detergents paper, while relatively less in other categories. I would guess that the first sample represents large reatilers who sell all the products related to food.</strong></p>
+<p><strong> Sample 1: The Second customer(Customer 38) spends in all the catoegires except relatively low spending in Frozen and Delicatessen. This might represent small retailers who sell daily use products which can be stored without refrigeration.</strong></p>
+<p><strong> Sample 2: The third customer spends a lot of money on all the categories except Milk, I would guess this is either a deli or a restraurant. </strong></p>
 
 </div>
 </div>
@@ -12152,28 +12153,30 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-<span class="n">target</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Grocery&#39;</span><span class="p">]</span>
-<span class="c1">#print target</span>
-<span class="c1">#TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
-<span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Grocery&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">score_pred</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
+    <span class="c1">#TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># TODO: Split the data into training and testing sets using the given feature as the target</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+    <span class="c1"># TODO: Split the data into training and testing sets using the given feature as the target</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
-<span class="c1"># TODO: Create a decision tree regressor and fit it to the training set</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+    <span class="c1"># TODO: Create a decision tree regressor and fit it to the training set</span>
+    <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="c1"># TODO: Report the score of the prediction using the testing set</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;feature: {} Score: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span><span class="n">score</span><span class="p">)</span>
 
-<span class="c1"># TODO: Report the score of the prediction using the testing set</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">score</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">score_pred</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12190,20 +12193,12 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(330, 5) (330L,)
-0.681884008544
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\ProgramData\Anaconda2.7\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-  &#34;This module will be removed in 0.20.&#34;, DeprecationWarning)
+<pre>feature: Fresh Score: -0.385749710204
+feature: Milk Score: 0.156275395017
+feature: Grocery Score: 0.681884008544
+feature: Frozen Score: -0.210135890125
+feature: Detergents_Paper Score: 0.271666980627
+feature: Delicatessen Score: -2.2547115372
 </pre>
 </div>
 </div>
@@ -12226,7 +12221,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: I attempted to predict Grocery feature and got and R^2 of 0.682. The fetaure can explain 68.2% variablilty of the model and hence a necessary feature for identifying customers spending habits</strong></p>
+<p><strong>Answer:</strong></p>
+<p><strong> As you can see in the above code Grocery has the best R^2 i.e. ~ 68.19%. That means grocery can explain the maximum variance and hence will be least useful in identifying the customers' spending habits. Due to this it will be my first choice to drop this feature. Other features like Fresh, Frozen and Delicatessen have the neagtive score and it means that it will be difficult to find the relation between these categories and thats why I will keep them. </strong></p>
 
 </div>
 </div>
@@ -12242,7 +12238,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -14044,7 +14040,12 @@ IKSJ6m9n+AAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:Grocery and Detergent_paper exhibit a good correlation as depicted from the scatter plot. This deny my assumption to predict Grocery as a relevant feature as it has good correlation with deteregents_paper. The data does seem to be to be normally distributed but also most of the data points are close to the origin </strong></p>
+<p><strong>Answer:</strong></p>
+<ol>
+<li>Grocery and Detergent_paper exhibit a good correlation as depicted from the scatter plot.</li>
+<li>Milk and detergents_paper also exhibit some kind of positive correlation.</li>
+</ol>
+<p>As seen above these are the only categories which has some positive R^2 score. But the distributions for the all the features does not appear to be normal. The distributions more or like looks like Log- Normal distribution. The distributions have a big spike when the values are low but then drops expoenetially when the value increases.</p>
 
 </div>
 </div>
